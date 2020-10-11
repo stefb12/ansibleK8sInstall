@@ -70,12 +70,12 @@
       tags:
         - user
 
-    - name: Enable iptables
+    - name: Enable iptables - native
       become: true
-      command: "{{ item }}"
-      ignore_errors: no
+      sysctl:
+        name: net.bridge.bridge-nf-call-iptables
+        value: 1
+        reload: yes
+        ignore_errors: no
       tags:
         - kubeadm
-      with_items:
-        - echo "net.bridge.bridge-nf-call-iptables=1" | tee -a /etc/sysctl.conf
-        - sysctl -p
