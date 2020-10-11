@@ -62,6 +62,16 @@
       when:
         - cni == "calico"
 
+    - name: Install Networking Provider  // Antrea
+      command: "{{ item }}"
+      ignore_errors: no
+      tags:
+        - kubectl
+      with_items:
+        - kubectl apply -f {{ cniAntreaUrl }}
+      when:
+        - cni == "antrea"
+
     - name: Generate join command
       command: kubeadm token create --print-join-command
       register: join_command
