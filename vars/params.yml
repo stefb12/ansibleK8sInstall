@@ -28,4 +28,4 @@ k8sApiIf: ens192
 cni: calico # calico / flannel / antrea
 cniFlannelUrl: https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
 cniCalicoUrl: https://docs.projectcalico.org/manifests/calico.yaml
-cniAntreaUrl: kubectl apply -f https://raw.githubusercontent.com/vmware-tanzu/antrea/master/build/yamls/antrea.yml
+cniAntreaUrl: https://raw.githubusercontent.com/vmware-tanzu/antrea/master/build/yamls/antrea.yml
