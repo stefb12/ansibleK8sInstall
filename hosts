@@ -1,15 +1,16 @@
----
-all:
-  children:
-    master:
-      hosts:
-        192.168.2.121:
-    workers:
-      hosts:
-        192.168.2.122:
-        192.168.2.123:
-  vars:
-    ansible_user: ubuntu
-    ansible_ssh_private_key_file: '~/.ssh/id_rsa.local'
-    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-    ansible_python_interpreter=/usr/bin/python3
+[master]
+10.206.114.73
+
+[workers]
+10.206.115.7
+10.206.114.71
+
+[kubernetes_cluster:children]
+master
+workers
+
+[kubernetes_cluster:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file='/ws/id_rsa_ub'
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_python_interpreter=/usr/bin/python3
